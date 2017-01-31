@@ -1,0 +1,66 @@
+{% extends 'header.html.twig' %}
+{% block stylesheets %}
+        <link href="{{ asset('css/acceuil.css') }}" rel="stylesheet" />
+{% endblock %}
+{% block body %}
+	<div class ="row">
+		<div class=" col-md-1 gauche sidebar-outer">
+		<div class ="sidebar">
+			<div class ="row text-center">
+    		<a href="#" class="col-xs-11  thumbnail cell" >
+      			<span class="glyphicon glyphicon-search" aria-hidden="true" style="font-size:50px; color:black"></span><br/>
+      			 Rechercher 
+    		</a>
+    		</div>
+    		<div class ="row text-center">
+    		<a href="{{ url('annuaire') }}" class= "col-xs-11  thumbnail cell" >
+      			<span class="glyphicon glyphicon-list-alt" aria-hidden="true" style="font-size:50px; color:black"></span><br/>
+      			 Annuaire 
+    		</a>
+    		</div>
+    		<div class ="row text-center">
+    		<a href="#" class="col-xs-11  thumbnail cell" >
+      			<span class="glyphicon glyphicon-question-sign" aria-hidden="true" style="font-size:50px; color:black"></span><br/>
+      			Aide 
+    		</a>
+    		</div>
+    	</div>
+    	</div>
+    	<div class ="col-md-offset-2 col-md-8 droite"/>
+
+    		<div class ="row text-center ">
+    			<div class="col-md-3">
+    				<a href="#" class= "col-xs-11  thumbnail cell1" >
+      				 Gestion des congés
+      				</a>
+    			</div>
+				<div class="col-md-3">
+    				<a href="{{ url('formation') }}" class= "col-xs-11  thumbnail cell2" >
+      					Gestion des Formations 
+    				</a>
+    			</div>
+    			<div class="col-md-3">
+    				<a href="" class= "col-xs-11  thumbnail cell3" >
+      					Gestion des recrutements 
+    				</a>
+    			</div>
+    		</div>
+
+    		<div class ="row text-center">
+    			<div class="col-md-3">
+    				<a href="#" class= "col-xs-11  thumbnail cell4" >
+      					Fiche de paie
+    				</a>
+    			</div>
+				<div class="col-md-3">
+    				<a href="#" class= "col-xs-11  thumbnail cell5" >
+      					Forum
+    				</a>
+    			</div>
+    			
+    		</div>
+    		
+    	</div>
+  </div>
+	</div>
+{% endblock %}

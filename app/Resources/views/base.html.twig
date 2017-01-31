@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link href="{{ asset('css/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
+        <link href="{{ asset('css/header.css') }}" rel="stylesheet" />
+        <link href="{{ asset('css/acceuil.css') }}" rel="stylesheet" />
+        
+    </head>
+    <body>
+    
+      <div class="container-fluid">
+        {% block header %}
+
+        {% endblock %}
+
+        {% block body %}
+
+        {% endblock %}
+
+    </div>
+
+        
+            <script src="{{ asset('js/jquery.js')}}"></script>
+            <script src="{{ asset('css/bootstrap/js/bootstrap.min.js') }}"></script>
+        {% block javascripts %}
+        {% endblock %}
+
+    </body>
+</html>
+                                                               

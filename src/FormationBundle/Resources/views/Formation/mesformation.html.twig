@@ -1,0 +1,152 @@
+{% extends 'header.html.twig' %}
+{% block title %} {{title}} {% endblock %}
+{% block stylesheets %}
+        <link href="{{ asset('css/acceuil.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block body %}
+	<div  class="row">
+    	<div class="navbar navbar-default col-xs-5 col-xs-offset-3">
+    		<div class="container-fluid" id="header">
+	    			
+			         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      					<ul class="nav navbar-nav">
+							    
+	      							<li><a href="{{ url('acceuil') }}">Acceuil </a></li>
+	      							<li><a href="{{ url('formation') }}">Formations </a></li>
+							        <li><a href="{{ url('mesFormation') }}"> Mes formations </a></li>
+							        <li><a href="{{ url('ajouts') }}"> Ajouter formation</a></li>
+							        <li><a href="{{ url('suivi') }}"> Suivi</a></li>
+							</ul>
+		        	</div>
+		    </div>
+	    </div>
+     </div>
+     {% if mess is defined %}
+    	<div class="alert alert-warning alert-dismissible" role="info">
+    		<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+  			<button type="button" class="close" data-dismiss="info" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  			{{mess}}		
+		</div>
+	{% endif %}
+     <div class="row">
+     	<h2 class="col-xs-offset-1">Catalogue formations</h2>
+     	{% if compte %}<h3 class="col-xs-offset-1">Nombre de jours de formation disponible : {{jours}}  </h3> {% endif %}
+     	<h3 class="col-xs-offset-1">
+     		cout total des formations € {{cout}}
+     	</h3>
+     </div>
+
+     <div class="row">
+     	<div class="col-xs-8 col-xs-offset-1">
+	    <table class="table table-striped ">
+	    	<caption>Liste des formations pas encore validées par le supérieur</caption>
+		    <thead>
+		      <tr>
+		        <th>Contenu</th>
+		        <th>Date</th>
+		        <th>Coût (€)</th>
+		        <th>Durée (jours) </th>
+		        <th>Pré-requis</td>
+		      </tr>
+		    </thead>
+		    <tbody>
+		    {% for forms in formation %}
+		    	{% if forms.etats == "Pas encore validée" %}
+		      		<tr>
+			        	<td>
+			        		{%if idSalaire==-100 %}
+			        			<a href="{{ url('formation_show', {'id': forms.formation.id , 'contenu':forms.formation.contenu, }) }}">
+			        		{% else %}
+			        			<a href="{{ url('formation_show', {'id': forms.formation.id , 'contenu':forms.formation.contenu,'idSalarie':idSalaire, }) }}">
+			        		{% endif %}
+	 						{{forms.formation.contenu}}
+	 						</a>
+	 					</td>
+				        <td>{{forms.formation.date|date("d/m/Y")}}</td>
+				        <td>{{forms.formation.cout}}</td>
+				        <td>{{forms.formation.duree}}</td>
+				        <td>{{forms.formation.preRequis}}</td>
+			      </tr>
+			    {% endif %}
+
+		     {% endfor %}
+		    </tbody>
+	    </table>
+	 </div>
+	 <div class="row">
+     	<div class="col-xs-8 col-xs-offset-1">
+	    <table class="table table-striped ">
+	    	<caption>Liste des formations rejetées par le supérieur</caption>
+		    <thead>
+		      <tr>
+		        <th>Contenu</th>
+		        <th>Date</th>
+		        <th>Coût (€)</th>
+		        <th>Durée (jours) </th>
+		        <th>Pré-requis</td>
+		      </tr>
+		    </thead>
+		    <tbody>
+		    {% for forms in formation %}
+		    	{% if forms.etats == "Non validée" %}
+		      		<tr>
+			        	<td>
+			        		{%if idSalaire==-100 %}
+			        			<a href="{{ url('formation_show', {'id': forms.formation.id , 'contenu':forms.formation.contenu, }) }}">
+			        		{% else %}
+			        			<a href="{{ url('formation_show', {'id': forms.formation.id , 'contenu':forms.formation.contenu,'idSalarie':idSalaire, }) }}">
+			        		{% endif %}
+	 						{{forms.formation.contenu}}
+	 						</a>
+	 					</td>
+				        <td>{{forms.formation.date|date("d/m/Y")}}</td>
+				        <td>{{forms.formation.cout}}</td>
+				        <td>{{forms.formation.duree}}</td>
+				        <td>{{forms.formation.preRequis}}</td>
+			      </tr>
+			    {% endif %}
+
+		     {% endfor %}
+		    </tbody>
+	    </table>
+	 </div>
+	  <div class="row">
+     	<div class="col-xs-8 col-xs-offset-1">
+	    <table class="table table-striped ">
+	    	 <caption>Liste des formations validées par le supérieur</caption>
+		    <thead>
+		      <tr>
+		        <th>Contenu</th>
+		        <th>Date</th>
+		        <th>Coût (€)</th>
+		        <th>Durée (jours) </th>
+		        <th>Pré-requis</td>
+		      </tr>
+		    </thead>
+		    <tbody>
+		    {% for forms in formation %}
+		    	{% if forms.etats == "Formation Validée" %}
+		      		<tr>
+			        	<td>
+				        	{%if idSalaire==-100 %}
+				        		<a href="{{ url('formation_show', {'id': forms.formation.id , 'contenu':forms.formation.contenu }) }}">
+		 						{{forms.formation.contenu}}
+		 						</a>
+		 					{% else %}
+		 						<a href="{{ url('formation_show', {'id': forms.formation.id , 'contenu':forms.formation.contenu,'idSalarie':idSalaire, }) }}">
+				        	{% endif %}
+				        </td>
+				        <td>{{forms.formation.date|date("d/m/Y")}}</td>
+				        <td>{{forms.formation.cout}}</td>
+				        <td>{{forms.formation.duree}}</td>
+				        <td>{{forms.formation.preRequis}}</td>
+			      </tr>
+			    {% endif %}
+
+		     {% endfor %}
+		    </tbody>
+	    </table>
+	 </div>
+	 </div>
+{% endblock %}

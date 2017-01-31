@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Salarie" table="salarie">
+    <indexes>
+      <index name="id" columns="id"/>
+      <index name="id_2" columns="id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nom" type="string" column="nom" length="30" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="prenom" type="string" column="prenom" length="15" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="datenaissance" type="date" column="dateNaissance" nullable="false"/>
+    <field name="sexe" type="string" column="sexe" length="1" nullable="false">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <field name="dateentre" type="date" column="dateEntre" nullable="false"/>
+    <field name="typecontrat" type="string" column="typeContrat" length="3" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="dureecontrat" type="integer" column="DureeContrat" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">en mois, 0 si CDI</option>
+      </options>
+    </field>
+    <field name="salaire" type="integer" column="salaire" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">brut</option>
+      </options>
+    </field>
+    <field name="superieurhierarchique" type="integer" column="superieurHierarchique" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-many field="idFormation" target-entity="Formation" mapped-by="idUsers" fetch="LAZY"/>
+  </entity>
+</doctrine-mapping>

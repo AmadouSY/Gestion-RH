@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\PartForm" table="part_form">
+    <indexes>
+      <index name="formation" columns="formation,salarie"/>
+      <index name="salarie" columns="salarie"/>
+      <index name="IDX_282083C2404021BF" columns="formation"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="etats" type="string" column="etats" length="45" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="lu" type="boolean" column="lu" nullable="false"/>
+    <many-to-one field="formation" target-entity="Formation" fetch="LAZY">
+      <join-columns>
+        <join-column name="formation" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="salarie" target-entity="Salarie" fetch="LAZY">
+      <join-columns>
+        <join-column name="salarie" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,57 @@
+.gauche
+{
+	background-color: #F38630;
+}
+.cell
+{
+	background-color: #F38630;
+	border-width: 0px;
+	border-color: black ;
+	border-bottom-width: 7px;
+	border-radius: 0px;
+	color:black;
+	font-weight: bold;
+	font-size:20px;
+}
+
+.cell a, .cell a:hover
+{
+	text-decoration: none ;
+}
+.droite .thumbnail
+{
+	color:white ;
+	border-width: 0px;
+	font-weight: bold;
+	font-size:25px;
+	height: 220px;
+	padding-top: 80px;
+	border-radius: 0px;
+
+}
+
+.cell1
+{
+	background-color: #588C73;
+}
+
+.cell2
+{
+	background-color: #F2E394;
+}
+.cell3
+{
+	background-color: #F2AE72;
+}
+.cell4
+{
+	background-color:#D96459;
+}
+.cell5
+{
+	background-color: #8C4646;
+}
+.droite a 
+{
+	text-decoration: none ;
+}

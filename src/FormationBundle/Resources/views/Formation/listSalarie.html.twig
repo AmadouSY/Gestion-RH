@@ -1,0 +1,68 @@
+{% extends 'header.html.twig' %}
+{% block title %} {{title}} {% endblock %}
+{% block stylesheets %}
+        <link href="{{ asset('css/acceuil.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block body %}
+	<div  class="row">
+    	<div class="navbar navbar-default col-xs-5 col-xs-offset-3">
+    		<div class="container-fluid" id="header">
+	    			
+			         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      					<ul class="nav navbar-nav">
+							    
+	      							<li><a href="{{ url('acceuil') }}">Acceuil </a></li>
+	      							<li><a href="{{ url('formation') }}">Formations </a></li>
+							        <li><a href="{{ url('mesFormation') }}"> Mes formations </a></li>
+							        <li><a href="{{ url('ajouts') }}"> Ajouter formation</a></li>
+							        <li><a href="{{ url('suivi') }}"> Suivi</a></li>
+							</ul>
+		        	</div>
+		    </div>
+	    </div>
+     </div>
+     {% if app.request.get('mess') %}
+    	
+		<div class="alert alert-info">
+	    	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	    	<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+	    	{{ app.request.get('mess') }}
+  		</div>
+	{% endif %}
+     <div class="row">
+     	<h2 class="col-xs-offset-1">Catalogue formations</h2>
+     </div>
+
+     <div class="row">
+     	<div class="col-xs-8 col-xs-offset-1">
+	    <table class="table table-striped ">
+
+		    <thead>
+		      <tr>
+		        <th>Nom</th>
+		        <th>Prénom</th>
+		        <th>Date de naissance</th>
+		        <th>Type Contrat</th>
+		        <th>sal</td>
+		      </tr>
+		    </thead>
+		    <tbody>
+		    {% for sal in salarie %}
+		      <tr>
+		        <td>
+		        	<a href="{{ url('mesFormation', {'id': sal.id  }) }}">
+ 						{{sal.nom}}
+ 					</a>
+ 				</td>
+		        <td>{{sal.prenom}}</td>
+		        <td>{{sal.dateNaissance|date("d/m/Y")}}</td>
+		        <td>{{sal.typeContrat}}</td>
+		        <td>{{sal.salaire}}</td>
+		      </tr>
+		     {% endfor %}
+		    </tbody>
+	    </table>
+	 </div>
+	 </div>
+{% endblock %}
